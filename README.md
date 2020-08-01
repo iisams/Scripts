@@ -2,7 +2,7 @@
 
 
 ![梨涡](https://raw.githubusercontent.com/bokuosusume/JavaScript/master/liwo/png/liwo.png)
-## 梨涡（京东大学生特权app）的闲时任务查看与提醒
+## 梨涡（京东大学生特权app）的闲时任务提醒 与 签到
 邀请码：dasaw 
 
 [下载链接]( http://2do.jd.com/events/red-envelopes/?inviter=1236228340192960513&channel=cash&extParam=1260048962852974594#/)
