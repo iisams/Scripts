@@ -120,14 +120,14 @@ function get_data(p) {sams.get(p,function(error, response, rd){
       sams.msg(subTitle, title,list,appurl)
       sams.log(list) 
     }
-    else {sams.log(subTitle, `没有任务`)}
+    else {sams.log(subTitle, `当前没有任务`)}
   }
 )}
 get_data(params4)
 setTimeout(get_data(params5),10)
 setTimeout(get_data(params2),10)
 setTimeout(get_data(params1),10)
-//setTimeout(get_data(params3),10)
+setTimeout(get_data(params3),10)
 
 function init() {
   isSurge = () => {
