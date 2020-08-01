@@ -69,7 +69,7 @@ var params5 = {
     url:look,
     headers:headers,
 }
-function get_data(p) {$httpClient.get(p,function(error, response, rd){
+function get_data(p) {sams.get(p,function(error, response, rd){
   var d = JSON.parse(rd)
   let task_data = d.resultData.data.queryTaskListInfo.taskInfoList
   let task_list = JSON.stringify(task_data,["taskName","buttonColor","unitPrice","buttonStr","stockTotalDaySurplus"])
