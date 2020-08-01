@@ -1,6 +1,6 @@
 # Sams Scripts 
 
-实用脚本
+
 ![梨涡](https://raw.githubusercontent.com/bokuosusume/JavaScript/master/liwo/png/liwo.png)
 ## 梨涡（京东大学生特权app）的闲时任务查看与提醒
 邀请码：dasaw 
