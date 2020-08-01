@@ -120,7 +120,7 @@ function get_data(p) {sams.get(p,function(error, response, rd){
       sams.msg(subTitle, title,list,appurl)
       sams.log(list) 
     }
-    else {sams.msg(subTitle, `获取失败`)}
+    else {sams.log(subTitle, `没有任务`)}
   }
 )}
 get_data(params4)
