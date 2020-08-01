@@ -5,7 +5,7 @@ const CookieName = 'Liwo'
 const Key = 'CookieJD'
 const Val = sams.getdata(Key)
 const url = "https://ms.jr.jd.com/gw/generic/bt/h5/m/queryLazyTaskList?time=-&reqData="
-const appurl = {"open-url" :"yocial://free_time"}
+const appurl = "yocial://free_time"
 
 const review = encodeURI (url + JSON.stringify
 ({"clientVersion":"4.1.0",
