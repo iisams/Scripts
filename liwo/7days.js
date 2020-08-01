@@ -65,7 +65,7 @@ function sign(){
       }
       //重新新一轮签到
       else if (result.status == false  && result.error.code == 39004) {
-        resetSign()
+        setTimeout(resetSign(),500)
         sams.log("重新新一轮签到")
                 }
       //失败
