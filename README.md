@@ -8,6 +8,7 @@
 [下载链接]( http://2do.jd.com/events/red-envelopes/?inviter=1236228340192960513&channel=cash&extParam=1260048962852974594#/)
 [下载链接](https://2do.jd.com/events/red-envelopes2?inviter=1236228340192960513&channel=cash&extParam=1260048962852974594#/)
 ```properties
+支持QX Loon Surge 其余自行配置
 
 【Loon 2.1+ 脚本配置】
 
