@@ -1,6 +1,6 @@
 //使用liwocookie
-//http-request https://api.m.jd.com/client.action.*functionId=signBean tag=获取京东Cookie, script-path=https://raw.githubusercontent.com/bokuosusume/JavaScript/master/liwo/liwocookie.js
-//cron "5 8 * * *" script-path=https://github.com/bokuosusume/JavaScript/raw/master/jd/jdtqz.js, tag= 京东特权值
+//http-request https://api.m.jd.com/client.action.*functionId=signBean tag=获取京东Cookie, script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/liwocookie.js
+//cron "5 8 * * *" script-path=https://github.com/iisams/Scripts/master/liwo/jdtqz.js, tag= 京东特权值
 
 const cookieName ='京东特权值'
 const Key = 'CookieJD'
