@@ -7,7 +7,7 @@
  *
  * [Script]
  * cron "5 8 * * *" script-path=https://github.com/iisams/Scripts/master/liwo/jdtqz.js, tag= 京东特权值
- * cron "0 0-22 * * *" tag=京东梨涡任务查看, script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/liwotask.js 
+ * cron "0 0-22 * * *" tag=京东梨涡任务查看, script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/lwtask.js
  * http-request https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean tag=获取京东Cookie, script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/jdcookie.js
  *
  * [MITM]
