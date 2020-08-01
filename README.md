@@ -1,4 +1,4 @@
-# Scripts
+# Sams Scripts 
 
 实用脚本
 ![梨涡](https://raw.githubusercontent.com/bokuosusume/JavaScript/master/liwo/png/liwo.png)
