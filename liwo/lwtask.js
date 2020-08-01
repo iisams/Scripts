@@ -5,7 +5,7 @@ const CookieName = 'Liwo'
 const Key = 'CookieJD'
 const Val = sams.getdata(Key)
 const url = "https://ms.jr.jd.com/gw/generic/bt/h5/m/queryLazyTaskList?time=-&reqData="
-const appurl = "yocial://free_time"
+const appurl = {"open-url" : yocial://free_time}
 
 const review = encodeURI (url + JSON.stringify
 ({"clientVersion":"4.1.0",
@@ -76,7 +76,7 @@ function get_data(p) {sams.get(p,function(error, response, rd){
   let t = JSON.parse(task_list)
   var i,x,n
   sams.log("获取列表成功")
-  var list = ""
+  var list = null
   for (n=0; n<t.length; n++){
     if (t[n]&&t[n].stockTotalDaySurplus == 0 ){
       t.splice(n,1)
