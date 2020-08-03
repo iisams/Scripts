@@ -20,7 +20,7 @@ cron "5 8 * * *" script-path=https://raw.githubusercontent.com/iisams/Scripts/ma
 
 cron "*/30 0-22 * * *" script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/lwtask.js, tag=京东梨涡闲时任务提醒
 
-cron "7 0 * * *" script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7days.js,tag=梨涡签到领现金
+cron "14,7 0 * * *" script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7days.js,tag=梨涡签到领现金
 
 http-request https:\/\/api\.m\.jd\.com\/api\/v1\/sign\/doSign script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7dayscookie.js, requires-body=true, timeout=10, tag=梨涡签到领现金Cookie
 
