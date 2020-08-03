@@ -69,11 +69,12 @@ function sign(){
          sams.msg(title,
              subTitle, detail)
          sams.log(detail)
+      }
       //重新新一轮签到
       else if (result.status == false  && result.error.code == 39004) {
         setTimeout(resetSign(),500)
         sams.log("重新新一轮签到")
-                }
+       }
       //失败
       else {
          let subTitle = `💔失败详情`
