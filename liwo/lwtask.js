@@ -5,7 +5,7 @@ const CookieName = 'Liwo'
 const Key = 'CookieJD'
 const Val = sams.getdata(Key)
 const url = "https://ms.jr.jd.com/gw/generic/bt/h5/m/queryLazyTaskList?time=-&reqData="
-const option = {"openurl":"yocial://free_time"}
+const option = {"open-url":"yocial://free_time"}
 
 const review = encodeURI (url + JSON.stringify
 ({"clientVersion":"4.1.0",
@@ -145,7 +145,7 @@ function init() {
     if (isQuanX()) return $prefs.setValueForKey(key, val)
   }
   msg = (title, subtitle, body, option) => {
-    if (isSurge()) $notification.post(title, subtitle, body, option["openurl"])
+    if (isSurge()) $notification.post(title, subtitle, body, option["open-url"])
     if (isQuanX()) $notify(title, subtitle, body, option)
   }
   log = (message) => console.log(message)
