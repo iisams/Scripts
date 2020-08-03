@@ -1,5 +1,5 @@
 //获取当前可参与的任务
-//QX
+//QX loon surge
 const sams = init()
 const CookieName = 'Liwo'
 const Key = 'CookieJD'
