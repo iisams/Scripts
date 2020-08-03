@@ -5,7 +5,7 @@ const CookieName = 'Liwo'
 const Key = 'CookieJD'
 const Val = sams.getdata(Key)
 const url = "https://ms.jr.jd.com/gw/generic/bt/h5/m/queryLazyTaskList?time=-&reqData="
-const appurl = "yocial://free_time"
+const option = {"openurl":"yocial://free_time"}
 
 const review = encodeURI (url + JSON.stringify
 ({"clientVersion":"4.1.0",
@@ -97,27 +97,27 @@ function get_data(p) {sams.get(p,function(error, response, rd){
     
     if (p.url == pick && list){  
       let title = "--📬票选任务--"+"共"+ num +"个任务--立刻参与的有👇--"
-      sams.msg(subTitle, title,list,appurl)
+      sams.msg(subTitle, title,list,option)
       sams.log(list)
     }
     else if (p.url == review && list){
       let title = "--📋调研任务--"+"共"+ num +"个任务--立刻参与的有👇--"
-      sams.msg(subTitle, title,list,appurl)
+      sams.msg(subTitle, title,list,option)
       sams.log(list) 
     }
     else if (p.url == talk && list){
       let title = "--💭话题任务--"+"共"+ num +"个任务--立刻参与的有👇--"
-      sams.msg(subTitle, title,list,appurl)
+      sams.msg(subTitle, title,list,option)
       sams.log(list) 
     } 
     else if (p.url == invite && list){
       let title = "--🔍测评任务--"+"共"+ num +"个任务--立刻参与的有👇--"
-      sams.msg(subTitle, title,list,appurl)
+      sams.msg(subTitle, title,list,option)
       sams.log(list) 
     }
     else if (p.url == look && list){
       let title = "--👀看看任务--"+"共"+ num +"个任务--立刻参与的有👇--"
-      sams.msg(subTitle, title,list,appurl)
+      sams.msg(subTitle, title,list,option)
       sams.log(list) 
     }
     else {sams.log(subTitle, `当前没有任务`)}
@@ -144,9 +144,9 @@ function init() {
     if (isSurge()) return $persistentStore.write(key, val)
     if (isQuanX()) return $prefs.setValueForKey(key, val)
   }
-  msg = (title, subtitle, body) => {
-    if (isSurge()) $notification.post(title, subtitle, body)
-    if (isQuanX()) $notify(title, subtitle, body)
+  msg = (title, subtitle, body, option) => {
+    if (isSurge()) $notification.post(title, subtitle, body, option["openurl"])
+    if (isQuanX()) $notify(title, subtitle, body, option)
   }
   log = (message) => console.log(message)
   get = (url, cb) => {
