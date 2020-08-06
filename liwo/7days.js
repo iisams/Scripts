@@ -18,14 +18,15 @@ const lwKey = 'CookieJD'
 const lwVal = sams.getdata(lwKey)
 const lwbodyKey = "Body"
 const lwbody = sams.getdata(lwbodyKey)
-
+const option = {"open-url":"yocial://webview/?url=https%3A%2F%2F2do.jd.com%2Fevents%2F7-days%2F%23%2F&login=1"}
+const option2 = {"open-url":"yocial://webview/?url=https%3A%2F%2Flwxianshi.jd.com%2FidleHours%2Findex.html%23%2Fwallet&login=1"}
 
 const headers = {"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Length": "246","Content-Type": "application/x-www-form-urlencoded","Cookie": lwVal,"Host": "api.m.jd.com","Origin": "https://2do.jd.com","Referer": "https://2do.jd.com/events/7-days/","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/yocial,"}
 
-//获取自1970年1月1日00:00:00 UTC以来经过的毫秒数并更新到消息体内
 const nowtime = Date.now()
 const changebody = lwbody.replace(/(&t=)\d*/,"&t=" + nowtime)
-sams.log("刷新时间成功 "+"Time:" + nowtime + "Body:" + changebody)
+const resetboody =  changebody.replace(/v1_sign_doSign/,"v1_sign_resetSign")
+sams.log("刷新时间成功 "+"Time:" + nowtime )
 
 var params = {
     url:"https://api.m.jd.com/api/v1/sign/doSign",
@@ -36,7 +37,7 @@ var params = {
 var resetparams = {
     url:"https://api.m.jd.com/api/v1/sign/resetSign",
     headers:headers,
-    body:changebody
+    body:resetboody
 }
 
 sign()
@@ -49,25 +50,25 @@ function sign(){
       let title = `☺️梨涡签到领现金`
       // 签到OK
       if (result.status == true) {
-         let subTitle = `💚签到成功`
+         let subTitle = `💚签到成功，点击通知查看零钱包`
          let detail = "✅" +result.data.message
          sams.msg(title,
-             subTitle, detail)
+             subTitle, detail, option2)
          sams.log(detail)
       }
       //签过到了
       else if (result.status == false && result.error.code == 39002) {
-         let subTitle = `💛您已签到`
+         let subTitle = `💛您已签到，点击通知查看零钱包`
          let detail = "❕" +result.error.message
          sams.msg(title,
-             subTitle, detail)
+             subTitle, detail, option2)
          sams.log(detail)
       }
      else if (result.status == false && result.error.code == 1007) {
-         let subTitle = `😈登陆失效请重新获取cookie`
+         let subTitle = `😈登陆失效，点击通知重新获取cookie`
          let detail = "❕" +result.error.message
          sams.msg(title,
-             subTitle, detail)
+             subTitle, detail, option)
          sams.log(detail)
       }
       //重新新一轮签到
@@ -95,18 +96,18 @@ function resetSign(){
         let title = `☺️梨涡签到领现金`
         // 签到OK
         if (result.status == true) {
-           let subTitle = `💚签到成功`
+           let subTitle = `💚(Reset)签到成功，点击通知查看零钱包`
            let detail = "✅" +result.data.message
            sams.msg(title,
-               subTitle, detail)
+               subTitle, detail, option2)
            sams.log(detail)
         }
         //签过到了
         else if (result.status == false ) {
-           let subTitle = `💛您已签到`
+           let subTitle = `💛(Reset)您已签到`
            let detail = "❕" +result.error.message
            sams.msg(title,
-               subTitle, detail)
+               subTitle, detail, option)
            sams.log(detail)
         }
         //失败
@@ -135,9 +136,9 @@ function init() {
     if (isSurge()) return $persistentStore.write(key, val)
     if (isQuanX()) return $prefs.setValueForKey(key, val)
   }
-  msg = (title, subtitle, body) => {
-    if (isSurge()) $notification.post(title, subtitle, body)
-    if (isQuanX()) $notify(title, subtitle, body)
+  msg = (title, subtitle, body, option) => {
+    if (isSurge()) $notification.post(title, subtitle, body, option["open-url"])
+    if (isQuanX()) $notify(title, subtitle, body, option)
   }
   log = (message) => console.log(message)
   get = (url, cb) => {
