@@ -1,5 +1,5 @@
 /*【Loon 2.1+ 脚本配置】
- *
+ * 梨涡app： https://bit.ly/33BRwHW
  * [Script]
  *
  *梨涡签到领现金
