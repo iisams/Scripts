@@ -29,4 +29,14 @@ http-request https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean scri
 [MITM]  
 
 hostname = api.m.jd.com
+
+
+【QX远程 脚本配置】
+
+[task_local]
+
+*/5 0-22 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/lwtask.js, tag=梨涡闲时任务提醒, img-url=https://raw.githubusercontent.com/iisams/Scripts/master/png/liwoicon.png, enabled=true
+21,8,2 8 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7days.js, tag=梨涡签到领现金, img-url=https://raw.githubusercontent.com/iisams/Scripts/master/png/liwoicon.png, enabled=true
+6 8 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/jdtqz.js, tag=京东特权活力值, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jdczf.png, enabled=true
+
 ```
