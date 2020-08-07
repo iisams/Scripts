@@ -1,5 +1,5 @@
 /*【Loon 2.1+ 脚本配置】 
- *
+ *梨涡app下载⏬：https://bit.ly/33BRwHW
  * [Script]
  *梨涡签到领现金
  *cron "7 0 * * *" script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7days.js,tag=梨涡签到领现金
