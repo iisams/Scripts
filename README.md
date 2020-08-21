@@ -5,7 +5,7 @@
 ## 梨涡（京东大学生特权app）的闲时任务提醒 与 签到
 邀请码：dasaw  
 
- jdcookie 进 bean.m.jd.com 再签到下就可获取了；梨涡的签到签到一次就可以获取了。
+ 使用nobyda大佬的京东cookie
 
 [下载链接]( https://2do.jd.com/events/invite_award/?channel=newcash&extParam=1260048962852974594&inviter=1236228340192960513)
 [下载链接](https://2do.jd.com/events/invite_award/?channel=newcash&extParam=1260048962852974594&inviter=1236228340192960513)
@@ -26,7 +26,6 @@ cron "14,7 0 * * *" script-path=https://raw.githubusercontent.com/iisams/Scripts
 
 http-request https:\/\/api\.m\.jd\.com\/api\/v1\/sign\/doSign script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7dayscookie.js, requires-body=true, timeout=10, tag=梨涡签到领现金Cookie
 
-http-request https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/jdcookie.js, tag=获取京东Cookie
 
 [MITM]  
 
