@@ -79,7 +79,7 @@ function sign(){
       let title = `☺️梨涡签到领现金`
       // 签到OK
       if (result.status == true) {
-         let subTitle = `💚签到成功`+ "💰钱包： "+money+"元"
+         let subTitle = `💚签到成功`+ "💰钱包:"+money+"元"
          let detail = "✅" +result.data.message 
          sams.msg(title,
              subTitle, detail, option2)
@@ -87,7 +87,7 @@ function sign(){
       }
       //签过到了
       else if (result.status == false && result.error.code == 39002) {
-         let subTitle = `💛您已签到`+ "💰钱包： "+money+"元"
+         let subTitle = `💛您已签到`+ "💰钱包:"+money+"元"
          let detail = "❕" +result.error.message
          sams.msg(title,
              subTitle, detail, option2)
@@ -125,7 +125,7 @@ function resetSign(){
         let title = `☺️梨涡签到领现金`
         // 签到OK
         if (result.status == true) {
-           let subTitle = `💚(Reset)签到成功`+ "💰钱包： "+money+"元"
+           let subTitle = `💚(Reset)签到成功`+ "💰钱包:"+money+"元"
            let detail = "✅" +result.data.message
            sams.msg(title,
                subTitle, detail, option2)
@@ -133,7 +133,7 @@ function resetSign(){
         }
         //签过到了
         else if (result.status == false ) {
-           let subTitle = `💛(Reset)您已签到`+ "💰钱包： "+money+"元"
+           let subTitle = `💛(Reset)您已签到`+ "💰钱包:"+money+"元"
            let detail = "❕" +result.error.message
            sams.msg(title,
                subTitle, detail, option)
