@@ -44,10 +44,12 @@ var moneyparams = {
     url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/queryUserAccount",
     headers:headers
 }
-var money = ''
 
-getmoney()
+
+
 sign()
+var money = ''
+getmoney()
 
 function getmoney() {
   return new Promise((resolve) => {
@@ -92,7 +94,7 @@ function sign(){
          sams.log(detail)
       }
      else if (result.status == false && result.error.code == 1007) {
-         let subTitle = `😈登陆失效，点击通知签到重新获取cookie`
+         let subTitle = `😈登陆失效`
          let detail = "❕" +result.error.message
          sams.msg(title,
              subTitle, detail, option)
