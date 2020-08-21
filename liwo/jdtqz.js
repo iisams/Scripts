@@ -4,9 +4,9 @@
 //http-request https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean tag=获取京东Cookie, script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/jdcookie.js
 
 const cookieName ='京东特权值'
-const Key = 'CookieJD'
+#const Key = 'CookieJD'
 const sams = init()
-let Val = sams.getdata(Key)
+let Val = sams.getdata('CookieJD')
 const headers ={"Accept": "application/json, text/plain, */*",
                 "Accept-Encoding": "gzip, deflate, br",
                 "Accept-Language": "zh-cn",
