@@ -13,7 +13,7 @@
  //支持QX loon surge
 const CookieName = '😀梨涡签到领钱'
 const sams = init()
-const lwKey = 'CookieJD'
+const lwKey = 'liwo'
 const lwVal = $request.headers['Cookie']
 const lwbody = $request.body
 const lwbodyKey = "Body"
@@ -23,7 +23,7 @@ if (lwVal && lwbody){
   let body = sams.setdata(lwbody, lwbodyKey)
   let msg = `${CookieName}`
   if (cookie && body){
-    sams.msg(msg, '❤梨涡签到Body and Cookie写入成功', '详见日志')
+    sams.msg(msg, '❤梨涡签到写入成功', '详见日志')
     sams.log(msg)
     sams.log(lwVal)
     sams.log(lwbody)
