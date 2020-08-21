@@ -45,11 +45,13 @@ var moneyparams = {
     headers:headers
 }
 
-
-
-sign()
 var money = ''
-getmoney()
+async function dotask() {
+  await getmoney();
+  await sign();
+}
+
+dotask() 
 
 function getmoney() {
   return new Promise((resolve) => {
