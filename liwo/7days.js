@@ -40,7 +40,34 @@ var resetparams = {
     body:resetboody
 }
 
+var moneyparams = {
+    url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/queryUserAccount",
+    headers:headers
+}
+var money = ''
+
+getmoney()
 sign()
+
+function getmoney() {
+  return new Promise((resolve) => {
+    sams.get(moneyparams,
+    (error,reponse,data) => {
+      try {
+        data = JSON.parse(data);
+        sams.log(data)
+        if (data.resultCode == 0) {
+        money += data.resultData.data.amount
+        }
+       else{money +=`获取失败`}
+      } catch (e) {
+        sams.log(e, resp);
+      } finally {
+        resolve(data);
+      }
+    })
+  })
+}
 
 function sign(){
     sams.post(params,
@@ -50,22 +77,22 @@ function sign(){
       let title = `☺️梨涡签到领现金`
       // 签到OK
       if (result.status == true) {
-         let subTitle = `💚签到成功，点击通知查看零钱包`
-         let detail = "✅" +result.data.message
+         let subTitle = `💚签到成功`
+         let detail = "✅" +result.data.message + "💰钱包 "+money+"元"
          sams.msg(title,
              subTitle, detail, option2)
          sams.log(detail)
       }
       //签过到了
       else if (result.status == false && result.error.code == 39002) {
-         let subTitle = `💛您已签到，点击通知查看零钱包`
-         let detail = "❕" +result.error.message
+         let subTitle = `💛您已签到`
+         let detail = "❕" +result.error.message+ "💰钱包 "+money+"元"
          sams.msg(title,
              subTitle, detail, option2)
          sams.log(detail)
       }
      else if (result.status == false && result.error.code == 1007) {
-         let subTitle = `😈登陆失效，点击通知重新获取cookie`
+         let subTitle = `😈登陆失效，点击通知签到重新获取cookie`
          let detail = "❕" +result.error.message
          sams.msg(title,
              subTitle, detail, option)
@@ -96,8 +123,8 @@ function resetSign(){
         let title = `☺️梨涡签到领现金`
         // 签到OK
         if (result.status == true) {
-           let subTitle = `💚(Reset)签到成功，点击通知查看零钱包`
-           let detail = "✅" +result.data.message
+           let subTitle = `💚(Reset)签到成功`
+           let detail = "✅" +result.data.message+ "💰钱包 "+money+"元"
            sams.msg(title,
                subTitle, detail, option2)
            sams.log(detail)
@@ -105,7 +132,7 @@ function resetSign(){
         //签过到了
         else if (result.status == false ) {
            let subTitle = `💛(Reset)您已签到`
-           let detail = "❕" +result.error.message
+           let detail = "❕" +result.error.message+ "💰钱包 "+money+"元"
            sams.msg(title,
                subTitle, detail, option)
            sams.log(detail)
