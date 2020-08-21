@@ -2,7 +2,7 @@
 //QX loon surge
 const sams = init()
 const CookieName = 'Liwo'
-#const Key = 'CookieJD'
+//const Key = 'CookieJD'
 const Val = sams.getdata('CookieJD')
 const url = "https://ms.jr.jd.com/gw/generic/bt/h5/m/queryLazyTaskList?time=-&reqData="
 const option = {"open-url":"yocial://free_time"}
