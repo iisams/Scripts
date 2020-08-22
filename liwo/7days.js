@@ -46,9 +46,12 @@ var moneyparams = {
 }
 
 var money = ''
+var message = ''
+
 async function dotask() {
-  await getmoney();
   await sign();
+  await getmoney();
+  await show()
 }
 
 dotask() 
@@ -61,9 +64,9 @@ function getmoney() {
         data = JSON.parse(data);
         sams.log(data)
         if (data.resultCode == 0) {
-        money += data.resultData.data.amount
+        money += `💰钱包有${data.resultData.data.amount}元`
         }
-       else{money +=`获取失败`}
+       else{money +=`💰钱包余额获取失败`}
       } catch (e) {
         sams.log(e, resp);
       } finally {
@@ -73,34 +76,32 @@ function getmoney() {
   })
 }
 
-function sign(){
+
+function sign() {
+  return new Promise((resolve) => {
     sams.post(params,
-    (error,reponse,data)=>{
-      let result = JSON.parse(data)
-      sams.log(result)
-      let title = `☺️梨涡签到领现金`
-      // 签到OK
-      if (result.status == true) {
-         let subTitle = `💚签到成功`+ "💰钱包:"+money+"元"
+    (error,reponse,data) => {
+      try {
+        result = JSON.parse(data);
+        sams.log(result)
+        if (result.status == true) {
+         let subTitle = `💚签到成功\n`
          let detail = "✅" +result.data.message 
-         sams.msg(title,
-             subTitle, detail, option2)
+         message += subTitle+detail
          sams.log(detail)
       }
       //签过到了
       else if (result.status == false && result.error.code == 39002) {
-         let subTitle = `💛您已签到`+ "💰钱包:"+money+"元"
+         let subTitle = `💛您已签到\n`
          let detail = "❕" +result.error.message
-         sams.msg(title,
-             subTitle, detail, option2)
+         message += subTitle+detail
          sams.log(detail)
       }
      else if (result.status == false && result.error.code == 1007) {
-         let subTitle = `😈登陆失效`
+         let subTitle = `😈登陆失效\n`
          let detail = "❕" +result.error.message
-         sams.msg(title,
-             subTitle, detail, option)
-         sams.log(detail)
+         message += subTitle+detail
+          sams.log(detail)
       }
       //重新新一轮签到
       else if (result.status == false  && result.error.code == 39004) {
@@ -109,49 +110,76 @@ function sign(){
        }
       //失败
       else {
-         let subTitle = `💔失败详情`
+         let subTitle = `💔失败详情\n`
          let detail = "❗" +result
+         message += subTitle+detail
          sams.log(detail)
-         sams.msg(title,
-             subTitle, detail)
+       }
+      } catch (e) {
+        sams.log(e, resp);
+      } finally {
+        resolve(data);
       }
-   })
+    })
+  })
 }
 
 
-function resetSign(){
-  sams.post(resetparams,
-      (error,reponse,data)=>{
-        let result = JSON.parse(data)
-        sams.log(result)
-        let title = `☺️梨涡签到领现金`
-        // 签到OK
-        if (result.status == true) {
-           let subTitle = `💚(Reset)签到成功`+ "💰钱包:"+money+"元"
-           let detail = "✅" +result.data.message
-           sams.msg(title,
-               subTitle, detail, option2)
-           sams.log(detail)
-        }
-        //签过到了
-        else if (result.status == false ) {
-           let subTitle = `💛(Reset)您已签到`+ "💰钱包:"+money+"元"
-           let detail = "❕" +result.error.message
-           sams.msg(title,
-               subTitle, detail, option)
-           sams.log(detail)
-        }
-        //失败
-        else {
-           let subTitle = `💔失败详情`
-           let detail = "❗" +result
-           sams.log(detail)
-           sams.msg(title,
-               subTitle, detail)
-        }
-     })
-}
  
+           
+ function resetSign() {
+   return new Promise((resolve) => {
+     sams.post(resetparams,
+     (error,reponse,data) => {
+       try {
+         result = JSON.parse(data);
+         sams.log(result)
+         if (result.status == true) {
+          let subTitle = `💚Reset签到成功\n`
+          let detail = "✅" +result.data.message 
+          message += subTitle+detail
+          sams.log(detail)
+       }
+       //签过到了
+       else if (result.status == false && result.error.code == 39002) {
+          let subTitle = `💛您已签到\n`
+          let detail = "❕" +result.error.message
+         message += subTitle+detail
+          sams.log(detail)
+       }
+      else if (result.status == false && result.error.code == 1007) {
+          let subTitle = `😈登陆失效\n`
+          let detail = "❕" +result.error.message
+          message += subTitle+detail
+           sams.log(detail)
+       }
+       
+       //失败
+       else {
+          let subTitle = `💔失败详情\n`
+          let detail = "❗" +result
+          message += subTitle+detail
+          sams.log(detail)
+        }
+       } catch (e) {
+         sams.log(e, resp);
+       } finally {
+         resolve(data);
+       }
+     })
+   })
+ }
+ 
+ function show(){
+   let title = "梨涡签到领现金"
+   sams.msg(title,money,message,option)
+ }
+  
+  
+  
+  
+  
+  
 function init() {
   isSurge = () => {
     return undefined === this.$httpClient ? false : true
