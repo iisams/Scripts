@@ -205,7 +205,7 @@ function init() {
       $httpClient.get(url, cb)
     }
     if (isQuanX()) {
-     //测试QX时，本脚本使用GET方法无法获取结果，改为POST
+     //本脚本在QX获取钱包余额时使用GET方法无法获取结果，故改为POST
       url.method = 'POST'
       $task.fetch(url).then((resp) => cb(null, resp, resp.body))
     }
