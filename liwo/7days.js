@@ -205,7 +205,8 @@ function init() {
       $httpClient.get(url, cb)
     }
     if (isQuanX()) {
-      url.method = 'GET'
+     //测试QX时，本脚本使用GET方法无法获取结果，改为POST
+      url.method = 'POST'
       $task.fetch(url).then((resp) => cb(null, resp, resp.body))
     }
   }
