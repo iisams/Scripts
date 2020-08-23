@@ -21,7 +21,7 @@ const lwbody = sams.getdata(lwbodyKey)
 const option = {"open-url":"yocial://webview/?url=https%3A%2F%2F2do.jd.com%2Fevents%2F7-days%2F%23%2F&login=1"}
 const option2 = {"open-url":"yocial://webview/?url=https%3A%2F%2Flwxianshi.jd.com%2FidleHours%2Findex.html%23%2Fwallet&login=1"}
 
-const headers = {"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Length": "246","Content-Type": "application/x-www-form-urlencoded","Cookie": lwVal,"Host": "api.m.jd.com","Origin": "https://2do.jd.com","Referer": "https://2do.jd.com/events/7-days/","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/yocial,"}
+const header = {"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Length": "246","Content-Type": "application/x-www-form-urlencoded","Cookie": lwVal,"Host": "api.m.jd.com","Origin": "https://2do.jd.com","Referer": "https://2do.jd.com/events/7-days/","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/yocial,"}
 
 const nowtime = Date.now()
 const changebody = lwbody.replace(/(&t=)\d*/,"&t=" + nowtime)
@@ -30,19 +30,19 @@ sams.log("刷新时间成功 "+"Time:" + nowtime )
 
 var params = {
     url:"https://api.m.jd.com/api/v1/sign/doSign",
-    headers:headers,
+    headers:header,
     body:changebody
 }
 
 var resetparams = {
     url:"https://api.m.jd.com/api/v1/sign/resetSign",
-    headers:headers,
+    headers:header,
     body:resetboody
 }
 
 var moneyparams = {
     url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/queryUserAccount",
-    headers:headers
+    headers:header
 }
 
 var money = ''
