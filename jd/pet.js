@@ -20,7 +20,7 @@ const $ = new Env(name);
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 
 //ios等软件用户直接用NobyDa的jd cookie
-const cookie = jdCookieNode.CookieJD ? jdCookieNode.CookieJD : $.getdata('CookieJD');
+const cookie = jdCookieNode.CookieJD ? jdCookieNode.CookieJD : $.getdata('CookieJD2');
 //京东接口地址
 const JD_API_HOST = 'https://api.m.jd.com/client.action';
 let jdNotify = $.getdata('jdPetNotify');
