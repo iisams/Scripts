@@ -41,20 +41,6 @@ let awardState = '';//上期活动的京豆是否收取
 // 【用box订阅的好处】
 // 1️⃣脚本也可以远程挂载了。助力功能只需在box里面设置助力码。
 // 2️⃣所有脚本的cookie都可以备份，方便你迁移到其他支持box的软件。
-let isBox = false //默认没有使用box
-const boxShareCodeArr = ['jd_plantBean1', 'jd_plantBean2', 'jd_plantBean3'];
-isBox = boxShareCodeArr.some((item) => {
-  const boxShareCode = $.getdata(item);
-  return (boxShareCode !== undefined && boxShareCode !== null && boxShareCode !== '');
-});
-if (isBox) {
-  plantUuids = [];
-  for (const item of boxShareCodeArr) {
-    if ($.getdata(item)) {
-      plantUuids.push($.getdata(item));
-    }
-  }
-}
 
 var Task = step();
 Task.next();
