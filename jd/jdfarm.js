@@ -32,28 +32,13 @@ let jdNotify = $.getdata('jdFruitNotify');
 //助力好友分享码(最多4个,否则后面的助力失败),原因:京东农场每人每天只有四次助力机会
 let shareCodes = [ // 这个列表填入你要助力的好友的shareCode
   '0a1200091c694627899171325b40ac35',
-  '8f4426583c594388affa0d11b479f171',
-  '',
-  '',
+  '8f4426583c594388affa0d11b479f171'
 ]
 // 添加box功能
 // 【用box订阅的好处】
 // 1️⃣脚本也可以远程挂载了。助力功能只需在box里面设置助力码。
 // 2️⃣所有脚本的cookie都可以备份，方便你迁移到其他支持box的软件。
-//let isBox = false //默认没有使用box
-//const boxShareCodeArr = ['jd_fruit1', 'jd_fruit2', 'jd_fruit3', 'jd_fruit4'];
-//isBox = boxShareCodeArr.some((item) => {
-  //const boxShareCode = $.getdata(item);
- // return (boxShareCode !== undefined && boxShareCode !== null && boxShareCode !== '');
-//});
-//if (isBox) {
- // shareCodes = [];
- // for (const item of boxShareCodeArr) {
-  //  if ($.getdata(item)) {
-    //  shareCodes.push($.getdata(item));
-   // }
- // }
-//}
+
 const Task = step()
 Task.next();
 
