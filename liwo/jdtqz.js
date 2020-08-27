@@ -3,8 +3,6 @@
 // cron "0 0-22 * * *" tag=京东梨涡任务查看, script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/lwtask.js
 //http-request https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean tag=获取京东Cookie, script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/jdcookie.js
 
-const cookieName ='京东特权值'
-//const Key = 'CookieJD'
 const sams = init()
 let Val = sams.getdata('CookieJD')
 const headers ={"Accept": "application/json, text/plain, */*",
@@ -16,38 +14,132 @@ const headers ={"Accept": "application/json, text/plain, */*",
                 "Origin": "https://btfront.jd.com",
                 "Referer": "https://btfront.jd.com/release/growth/index.html",
                 "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.1 Mobile/15E148 Safari/604.1",}
+                
 const signurl = 'https://ms.jr.jd.com/gw/generic/bt/h5/m/doSign?reqData=%7B%7D'
-const params ={
-    url:signurl,
-    headers:headers,
+const nowtime = Date.now()
+var taskid = []
+var message=""
+var taskmsg = ""
+
+var taskparams = {
+  url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/taskStatistics?_="+nowtime+"&reqData=%7B%22req%22:%7B%22pageSize%22:50,%22channelId%22:3%7D%7D",
+  headers:headers
 }
 
-sign()
+const signparams ={
+     url:signurl,
+     headers:headers,
+ }
 
-function sign() {
-    sams.get(params, (error, response, data) => {
-      const result = JSON.parse(data)
-      const title = `${cookieName}`
-      let subTitle = ``
-      let detail = ``
-      if (result.resultCode == 0 && result.resultMsg == '操作成功') {
-        subTitle = `❤京东特权值签到成功`
-        sams.log(result)
-      } else if (result.resultCode == 3) {
-          subTitle = `💔京东特权值签到失败,请重新获取cookie`
-          sams.log(result)
-      } else {
-        subTitle = `未知`
-        detail = `❗ ${result.resultrMsg}`
-        sams.log(result)
+async function dotask() {
+  await Sign();
+  await gettaskid();
+  await doing()
+  await show()
+}
+
+dotask()
+
+function gettaskid() {
+  return new Promise((resolve) => {
+    sams.get(taskparams,
+    (error,reponse,data) => {
+      try {
+        data = JSON.parse(data);
+        sams.log(data)
+        if (data.resultCode == 0) {
+          sams.log("正在获取taskID")
+          var list = data.resultData.taskList
+          for (var i in list) {
+            taskid.push(list[i].taskId)
+          }
+          sams.log("获取taskID成功:"+taskid)
+        }
+       else{taskid += null}
+      } catch (e) {
+        sams.log(e, resp);
+      } finally {
+        resolve(data);
       }
-      sams.msg(title, subTitle, detail)
     })
-    sams.done()
+  })
+}
+
+function dotaskid(id) {
+  return new Promise((resolve) => {
+    var dotaskparams = {
+      url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/doSpecifyClick?reqData=%7B%22req%22:%7B%22taskId%22:"+id+"%7D%7D",
+      headers:headers
     }
+    sams.get(dotaskparams,
+    (error,reponse,data) => {
+      try {
+        data = JSON.parse(data);
+        if (data.resultCode == 0) {
+          let subTitle = id+`>>执行任务${data.resultData.info}\n`
+          message += subTitle
+          sams.log(subTitle)
+        }
+       else{message +=  "没有任务或任务失败\n"}
+      } catch (e) {
+        sams.log(e, resp);
+      } finally {
+        resolve(data);
+      }
+    })
+  })
+}
+
+function doing(){
+    if (taskid){
+    sams.log("正在逐个处理任务")
+    for (var i in taskid){
+       var n = taskid[i]
+       dotaskid(n)
+  }
+ taskmsg += `❤已完成浏览任务`
+ }
+ else return
+}
 
 
-  function init() {
+function Sign() {
+  return new Promise((resolve) => {
+    sams.get(signparams,
+    (error,reponse,data) => {
+      try {
+        data = JSON.parse(data);
+        if (data.resultCode == 0 && data.resultMsg == '操作成功') {
+                subTitle = `❤京东特权值签到成功\n`
+                message += subTitle
+                sams.log(data)
+              } else if (data.resultCode == 3) {
+                  subTitle = `💔京东特权值签到失败,请重新获取cookie\n`
+                  message += subTitle
+                  sams.log(data)
+              } else {
+                subTitle = `未知`
+                detail = `❗ ${result.resultrMsg}\n`
+                message += subTitle+detail
+                sams.log(data)
+              }
+       
+      } catch (e) {
+        sams.log(e, resp);
+      } finally {
+        resolve(data);
+      }
+    })
+  })
+}
+
+
+function show(){
+    let title = "京东特权活力值签到"
+    sams.msg(title,message,taskmsg)
+}
+
+function init() {
     isSurge = () => {
       return undefined === this.$httpClient ? false : true
     }
@@ -90,3 +182,5 @@ function sign() {
     }
     return { isSurge, isQuanX, msg, log, getdata, setdata, get, post, done }
   }
+
+
