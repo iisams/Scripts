@@ -110,11 +110,11 @@ function Sign() {
       try {
         data = JSON.parse(data);
         if (data.resultCode == 0 && data.resultMsg == '操作成功') {
-                subTitle = `❤京东特权值签到成功\n`
+                subTitle = `❤签到成功\n`
                 message += subTitle
                 sams.log(data)
               } else if (data.resultCode == 3) {
-                  subTitle = `💔京东特权值签到失败,请重新获取cookie\n`
+                  subTitle = `💔签到失败,请重新获取cookie\n`
                   message += subTitle
                   sams.log(data)
               } else {
