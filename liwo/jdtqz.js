@@ -55,7 +55,7 @@ function gettaskid() {
             taskid.push(list[i].taskId)
             taskname.push(list[i].subTitle)
           }
-          sams.log("获取taskID和taskName成功:"+taskid+taskname)
+          sams.log("获取taskID和taskName成功:"+taskid+" | "+taskname)
         }
        else{taskid += null}
       } catch (e) {
@@ -120,7 +120,7 @@ function Sign() {
                   sams.log(data)
               } else {
                 subTitle = `未知`
-                detail = `❗ ${result.resultrMsg}\n`
+                detail = `❗ ${data.resultrMsg}\n`
                 message += subTitle+detail
                 sams.log(data)
               }
