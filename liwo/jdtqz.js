@@ -96,9 +96,9 @@ function doing(){
     for (var i in taskid){
        var n = taskid[i]
        dotaskid(n)
+       taskmsg += `❤已完成浏览${n}任务`
+    }
   }
- taskmsg += `❤已完成浏览任务`
- }
  else return
 }
 
