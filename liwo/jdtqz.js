@@ -18,6 +18,7 @@ const headers ={"Accept": "application/json, text/plain, */*",
 const signurl = 'https://ms.jr.jd.com/gw/generic/bt/h5/m/doSign?reqData=%7B%7D'
 const nowtime = Date.now()
 var taskid = []
+var taskname = []
 var message=""
 var taskmsg = ""
 
@@ -47,13 +48,14 @@ function gettaskid() {
       try {
         data = JSON.parse(data);
         sams.log(data)
+        sams.log("正在获取taskID")
         if (data.resultCode == 0) {
-          sams.log("正在获取taskID")
           var list = data.resultData.taskList
           for (var i in list) {
             taskid.push(list[i].taskId)
+            taskname.push(list[i].subTitle)
           }
-          sams.log("获取taskID成功:"+taskid)
+          sams.log("获取taskID和taskName成功:"+taskid+taskname)
         }
        else{taskid += null}
       } catch (e) {
@@ -77,10 +79,9 @@ function dotaskid(id) {
         data = JSON.parse(data);
         if (data.resultCode == 0) {
           let subTitle = id+`>>执行任务${data.resultData.info}\n`
-          message += subTitle
           sams.log(subTitle)
         }
-       else{message +=  "没有任务或任务失败\n"}
+       else{sams.log("没有任务或任务失败\n")}
       } catch (e) {
         sams.log(e, resp);
       } finally {
@@ -96,7 +97,7 @@ function doing(){
     for (var i in taskid){
        var n = taskid[i]
        dotaskid(n)
-       taskmsg += `❤已完成浏览${n}任务`
+       taskmsg += `❤完成浏览${taskname[i]}`
     }
   }
  else return
