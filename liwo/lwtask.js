@@ -69,12 +69,13 @@ var params5 = {
     headers:headers,
 }
 
-var lookmsg = "【看看】\n"
+/*var lookmsg = "【看看】\n"
 var pickmsg = "【票选】\n"
 var talkmsg = "【话题】\n"
 var reviewmsg = "【调研】\n"
 var invitemsg = "【测评】\n"
 var message = ""
+*/
 
 /**async function dotask(){
   await Promise.all([
@@ -87,6 +88,9 @@ var message = ""
   await show()
 }
 **/
+
+var message = ""
+
 function dotask(){
    setTimeout(looklist(),10)
    setTimeout(picklist(),20)
@@ -123,15 +127,15 @@ async function looklist(){
     try{
       for (i=0;i<tasklist.length;i++){
         if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
-          var msg = (i+1)+"."+"🏷️"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
-          lookmsg += msg
+          var msg = (i+1)+"."+"🏷️【看看】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          message += msg
         }
       }
-      sams.log(lookmsg)
+      sams.log(message)
     }catch(e){
       sams.log(e)
     }finally{
-      resolve(lookmsg)
+      resolve(message)
     }
   }
   )
@@ -145,15 +149,15 @@ async function talklist(){
     try{
       for (i=0;i<tasklist.length;i++){
         if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
-          var msg = (i+1)+"."+"🏷️"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
-          talkmsg += msg
+          var msg = (i+1)+"."+"🏷️【话题】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          message += msg
         }
       }
-      sams.log(talkmsg)
+      sams.log(message)
     }catch(e){
       sams.log(e)
     }finally{
-      resolve(talkmsg)
+      resolve(message)
     }
   }
   )
@@ -167,15 +171,15 @@ async function reviewlist(){
     try{
       for (i=0;i<tasklist.length;i++){
         if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
-          var msg = (i+1)+"."+"🏷️"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
-          reviewmsg += msg
+          var msg = (i+1)+"."+"🏷️【调研】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          message += msg
         }
       }
-      sams.log(reviewmsg)
+      sams.log(message)
     }catch(e){
       sams.log(e)
     }finally{
-      resolve(reviewmsg)
+      resolve(message)
     }
   }
   )
@@ -189,15 +193,15 @@ async function picklist(){
     try{
       for (i=0;i<tasklist.length;i++){
         if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
-          var msg = (i+1)+"."+"🏷️"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
-          pickmsg += msg
+          var msg = (i+1)+"."+"🏷️【票选】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          message += msg
         }
       }
-      sams.log(pickmsg)
+      sams.log(message)
     }catch(e){
       sams.log(e)
     }finally{
-      resolve(pickmsg)
+      resolve(message)
     }
   }
   )
@@ -211,15 +215,15 @@ async function invitelist(){
     try{
       for (i=0;i<tasklist.length;i++){
         if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
-          var msg = (i+1)+"."+"🏷️"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
-          invitemsg += msg
+          var msg = (i+1)+"."+"🏷️【测评】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          message += msg
         }
       }
-      sams.log(invitemsg)
+      sams.log(message)
     }catch(e){
       sams.log(e)
     }finally{
-      resolve(talkinvitemsgmsg)
+      resolve(message)
     }
   }
   )
@@ -227,7 +231,6 @@ async function invitelist(){
 
 function show(){
   let subtitle = "任务详情"
-  message = lookmsg+pickmsg+talkmsg+reviewmsg+invitemsg
   sams.log(message)
   sams.msg(taskName,subtitle,message,option)
 }
