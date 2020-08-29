@@ -222,8 +222,12 @@ async function invitelist(){
 function show(){
   let subtitle = "任务详情"
   sams.log(message)
+  if (message){
   sams.msg(taskName,subtitle,message,option)
+  }
+  else return
 }
+  
 
 async function dotask(){
   await Promise.all([
