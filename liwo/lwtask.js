@@ -102,7 +102,7 @@ function gettip() {
       try {
         data = JSON.parse(data);
         if (data.resultCode == 0) {
-        active += ${data.resultData.bubbleInfoList[0].content}
+        active += `🍄说：${data.resultData.bubbleInfoList[0].content}`
         }
        else{active +=`Github：@iisams 制作`}
       } catch (e) {
@@ -140,7 +140,7 @@ async function looklist(){
     try{
       for (i=0;i<tasklist.length;i++){
         if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
-          var msg = (i+1)+"."+"🏷️【看看】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          var msg = (i+1)+"."+"👀【看看】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
           message += msg
         }
       }
@@ -162,7 +162,7 @@ async function talklist(){
     try{
       for (i=0;i<tasklist.length;i++){
         if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
-          var msg = (i+1)+"."+"🏷️【话题】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          var msg = (i+1)+"."+"📢【话题】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
           message += msg
         }
       }
@@ -206,7 +206,7 @@ async function picklist(){
     try{
       for (i=0;i<tasklist.length;i++){
         if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
-          var msg = (i+1)+"."+"🏷️【票选】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          var msg = (i+1)+"."+"✔【票选】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
           message += msg
         }
       }
@@ -228,7 +228,7 @@ async function invitelist(){
     try{
       for (i=0;i<tasklist.length;i++){
         if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
-          var msg = (i+1)+"."+"🏷️【测评】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          var msg = (i+1)+"."+"📃【测评】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
           message += msg
         }
       }
