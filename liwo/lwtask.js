@@ -77,16 +77,6 @@ var invitemsg = "【测评】\n"
 var message = ""
 */
 
-async function dotask(){
-  await Promise.all([
-   looklist(),
-   picklist(),
-   reviewlist(),
-   talklist(),
-   invitelist()
-  ]);
-  await show()
-}
 
 
 var message = ""
@@ -99,7 +89,7 @@ var message = ""
    setTimeout(invitelist(),50)
    setTimeout(show(),60)
 }*/
-dotask()
+
 
 function get_data(p){
   return new Promise((resolve)=>{
@@ -234,6 +224,19 @@ function show(){
   sams.log(message)
   sams.msg(taskName,subtitle,message,option)
 }
+
+async function dotask(){
+  await Promise.all([
+   looklist(),
+   picklist(),
+   reviewlist(),
+   talklist(),
+   invitelist()
+  ]);
+  await show()
+}
+
+dotask()
 
 function init() {
   isSurge = () => {
