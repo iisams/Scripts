@@ -81,7 +81,7 @@ async function dotask(){
   await picklist()
   await reviewlist()
   await talklist()
-  await invitelist()；
+  await invitelist()
   
 }
 dotask()
