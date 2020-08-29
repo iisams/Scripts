@@ -69,15 +69,6 @@ var params5 = {
     headers:headers,
 }
 
-/*var lookmsg = "【看看】\n"
-var pickmsg = "【票选】\n"
-var talkmsg = "【话题】\n"
-var reviewmsg = "【调研】\n"
-var invitemsg = "【测评】\n"
-var message = ""
-*/
-
-
 
 var message = ""
 var active = ""
@@ -117,7 +108,7 @@ function gettip() {
 
 function get_data(p){
   return new Promise((resolve)=>{
-    sams.get(p,(error,response,data)=>{
+    setTimeout(() => {sams.get(p,(error,response,data)=>{
       try{
         data = JSON.parse(data)
       }
@@ -130,6 +121,7 @@ function get_data(p){
     }
     )
   }
+ },10)
  )
 }
 
