@@ -3,7 +3,6 @@
 
 const sams = init()
 const taskName = '梨涡闲时任务提醒⏰'
-//const Key = 'CookieJD'
 const Val = sams.getdata('CookieJD')
 const url = "https://ms.jr.jd.com/gw/generic/bt/h5/m/queryLazyTaskList?time=-&reqData="
 const option = {"open-url":"yocial://free_time"}
@@ -77,13 +76,16 @@ var reviewmsg = "【调研】\n"
 var invitemsg = "【测评】\n"
 
 async function dotask(){
-  await looklist()
-  await picklist()
-  await reviewlist()
-  await talklist()
-  await invitelist()
+  await Promise.all([
+   looklist(),
+   picklist(),
+   reviewlist(),
+   talklist(),
+   invitelist()
+  ]);
   await show()
 }
+
 dotask()
 
 function get_data(p){
