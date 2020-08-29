@@ -258,7 +258,7 @@ async function dotask(){
    picklist(),
    reviewlist(),
    talklist(),
-   invitelist(),
+   //invitelist(),
    gettip()
   ]);
   await show()
