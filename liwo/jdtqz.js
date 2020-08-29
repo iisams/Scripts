@@ -50,7 +50,7 @@ function userinfo() {
         sams.log(JSON.stringify(data))
         if (data.resultCode == 0) {
           var list = data.resultData.ecologicUserInfo
-          taskmsg += `👦用户:${list.pin}🎖特权值:${list.ecologicScore}🔰Lv${list.scoreLevel}`
+          taskmsg += `👦[用户]${list.pin}\n🎖[活力值]${list.ecologicScore}\n🔰[等级]Lv${list.scoreLevel}\n`
           sams.log("获取用户信息成功:"+usermsg)
         }
        else{taskmsg += null}
