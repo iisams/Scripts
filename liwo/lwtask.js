@@ -222,6 +222,7 @@ async function invitelist(){
 function show(){
   let subtitle = "任务详情"
   message = lookmsg+pickmsg+talkmsg+reviewmsg+invitemsg
+  sams.log(message)
   sams.msg(taskName,subtitle,message,option)
 }
 
