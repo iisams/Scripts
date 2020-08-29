@@ -89,7 +89,7 @@ var invitemsg = "【测评】\n"
 dotask()
 **/
 
-talklist()
+looklist()
 setTimeout(talklist(),100)
 setTimeout(picklist(),100)
 setTimeout(reviewlist(),100)
