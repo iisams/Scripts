@@ -2,7 +2,7 @@
 //QX loon surge    
 
 const sams = init()
-const taskName = '梨涡闲时任务提醒⏰'
+const taskName = '😊梨涡闲时任务提醒⏰点击通知直达闲时'
 const Val = sams.getdata('CookieJD')
 const url = "https://ms.jr.jd.com/gw/generic/bt/h5/m/queryLazyTaskList?time=-&reqData="
 const option = {"open-url":"yocial://free_time"}
@@ -102,7 +102,7 @@ function gettip() {
       try {
         data = JSON.parse(data);
         if (data.resultCode == 0) {
-        active += `🍄说：${data.resultData.bubbleInfoList[0].content}`
+        active += `🍄小蘑菇说：${data.resultData.bubbleInfoList[0].content}`
         }
        else{active +=`Github：@iisams 制作`}
       } catch (e) {
@@ -228,7 +228,7 @@ async function invitelist(){
     try{
       for (i=0;i<tasklist.length;i++){
         if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
-          var msg = (i+1)+"."+"📃【测评】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          var msg = (i+1)+"."+"🔍【测评】"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
           message += msg
         }
       }
