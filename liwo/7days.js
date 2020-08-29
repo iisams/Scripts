@@ -48,13 +48,7 @@ var moneyparams = {
 var money = ''
 var message = ''
 
-async function dotask() {
-  await sign();
-  await getmoney();
-  await show()
-}
 
-dotask() 
 
 function getmoney() {
   return new Promise((resolve) => {
@@ -176,7 +170,13 @@ function sign() {
  }
   
   
-  
+  async function dotask() {
+  await sign();
+  await getmoney();
+  await show()
+}
+
+dotask() 
   
   
   
