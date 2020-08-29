@@ -82,10 +82,10 @@ async function dotask(){
   await reviewlist()
   await talklist()
   await invitelist()
-  
+  await show()
 }
 dotask()
-show()
+
 function get_data(p){
   return new Promise((resolve)=>{
     sams.get(p,(error,response,data)=>{
