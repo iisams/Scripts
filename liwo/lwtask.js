@@ -74,6 +74,7 @@ var pickmsg = "【票选】\n"
 var talkmsg = "【话题】\n"
 var reviewmsg = "【调研】\n"
 var invitemsg = "【测评】\n"
+var message = ""
 
 async function dotask(){
   await Promise.all([
@@ -220,7 +221,7 @@ async function invitelist(){
 
 function show(){
   let subtitle = "任务详情"
-  var message = lookmsg+pickmsg+talkmsg+reviewmsg+invitemsg
+  message = lookmsg+pickmsg+talkmsg+reviewmsg+invitemsg
   sams.msg(taskName,subtitle,message,option)
 }
 
