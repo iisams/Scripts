@@ -21,7 +21,6 @@ var taskid = []
 var taskname = []
 var message=""
 var taskmsg = ""
-var usermsg = ""
 
 var taskparams = {
   url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/taskStatistics?_="+nowtime+"&reqData=%7B%22req%22:%7B%22pageSize%22:50,%22channelId%22:3%7D%7D",
@@ -51,10 +50,10 @@ function userinfo() {
         sams.log(JSON.stringify(data))
         if (data.resultCode == 0) {
           var list = data.resultData.ecologicUserInfo
-          usermsg += `👦用户:${list.pin}🎖特权值:${list.ecologicScore}🔰Lv${list.scoreLevel}`
+          taskmsg += `👦用户:${list.pin}🎖特权值:${list.ecologicScore}🔰Lv${list.scoreLevel}`
           sams.log("获取用户信息成功:"+usermsg)
         }
-       else{usermsg += null}
+       else{taskmsg += null}
       } catch (e) {
         sams.log(e, resp);
       } finally {
@@ -159,15 +158,15 @@ function Sign() {
 
 
 function show(){
-    let title = usermsg
+    let title = "京东特权活力值签到"
     sams.msg(title,message,taskmsg)
 }
 
 async function dotask() {
   await Sign();
+  await userinfo()
   await gettaskid();
   await doing()
-  await userinfo()
   await show()
 }
 
