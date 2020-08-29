@@ -1,18 +1,18 @@
 //获取当前可参与的任务
 //QX loon surge
+
 const sams = init()
-const CookieName = 'Liwo'
+const taskName = '梨涡闲时任务提醒⏰'
 //const Key = 'CookieJD'
 const Val = sams.getdata('CookieJD')
 const url = "https://ms.jr.jd.com/gw/generic/bt/h5/m/queryLazyTaskList?time=-&reqData="
 const option = {"open-url":"yocial://free_time"}
 
-const review = encodeURI (url + JSON.stringify
-({"clientVersion":"4.1.0",
- "taskType":"2",
- "pageNo":1,
- "pageSize":10,
- "clientType":""}))
+const review = encodeURI (url + JSON.stringify({"clientVersion":"4.1.0",
+  "taskType":"2",
+  "pageNo":1,
+  "pageSize":10,
+  "clientType":""}))
 const invite = encodeURI (url + JSON.stringify({"clientVersion":"4.1.0",
   "taskType":"3",
   "pageNo":1,
@@ -69,65 +69,155 @@ var params5 = {
     url:look,
     headers:headers,
 }
-function get_data(p) {sams.get(p,function(error, response, rd){
-  var d = JSON.parse(rd)
-  let task_data = d.resultData.data.queryTaskListInfo.taskInfoList
-  let task_list = JSON.stringify(task_data,["taskName","buttonColor","unitPrice","buttonStr","stockTotalDaySurplus"])
-  let t = JSON.parse(task_list)
-  var i,x,n
-  sams.log("获取列表成功")
-  var list = null
-  for (n=0; n<t.length; n++){
-    if (t[n]&&t[n].stockTotalDaySurplus == 0 ){
-      t.splice(n,1)
-      n--     
-    }
-  }
-  sams.log(t)
-  let num = t.length
-  for (i=0; i<t.length;i++){
-    var x = t[i]
-    
-  if (x.buttonColor == 1){
-    var msg = (i+1)+"."+"🏷️"+ x.taskName +" "+"💰"+ x.unitPrice +"元 "+"🟢"+ x.buttonStr + " 名额"+x.stockTotalDaySurplus +`\n`
-    list = list + msg
-    }
+
+var lookmsg = "【看看】\n"
+var pickmsg = "【票选】\n"
+var talkmsg = "【话题】\n"
+var reviewmsg = "【调研】\n"
+var invitemsg = "【测评】\n"
+dotask()
+async function dotask(){
+  await looklist()
+  await picklist()
+  await reviewlist()
+  await talklist()
+  await invitelist()
+  await show()
 }
-    let subTitle = `😊梨涡闲时提醒 点击通知跳转APP🔔`
-    
-    if (p.url == pick && list){  
-      let title = "--📬票选任务--"+"共"+ num +"个任务--立刻参与的有👇--"
-      sams.msg(subTitle, title,list,option)
-      sams.log(list)
+
+function get_data(p){
+  return new Promise((resolve)=>{
+    sams.get(p,(error,response,data)=>{
+      try{
+        data = JSON.parse(data)
+      }
+      catch(e){
+        sams.log(e,response)
+      }
+      finally{
+        resolve(data)
+      }
     }
-    else if (p.url == review && list){
-      let title = "--📋调研任务--"+"共"+ num +"个任务--立刻参与的有👇--"
-      sams.msg(subTitle, title,list,option)
-      sams.log(list) 
-    }
-    else if (p.url == talk && list){
-      let title = "--💭话题任务--"+"共"+ num +"个任务--立刻参与的有👇--"
-      sams.msg(subTitle, title,list,option)
-      sams.log(list) 
-    } 
-    else if (p.url == invite && list){
-      let title = "--🔍测评任务--"+"共"+ num +"个任务--立刻参与的有👇--"
-      sams.msg(subTitle, title,list,option)
-      sams.log(list) 
-    }
-    else if (p.url == look && list){
-      let title = "--👀看看任务--"+"共"+ num +"个任务--立刻参与的有👇--"
-      sams.msg(subTitle, title,list,option)
-      sams.log(list) 
-    }
-    else {sams.log(subTitle, `当前没有任务`)}
+    )
   }
-)}
-get_data(params4)
-setTimeout(get_data(params5),10)
-setTimeout(get_data(params2),10)
-setTimeout(get_data(params1),10)
-//setTimeout(get_data(params3),10)
+ )
+}
+
+async function looklist(){
+  const d = await get_data(params5)
+  return new Promise((resolve)=>{
+    var i
+    const tasklist = d.resultData.data.queryTaskListInfo.taskInfoList
+    try{
+      for (i=0;i<tasklist.length;i++){
+        if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
+          var msg = (i+1)+"."+"🏷️"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          lookmsg += msg
+        }
+      }
+      sams.log(lookmsg)
+    }catch(e){
+      sams.log(e)
+    }finally{
+      resolve(lookmsg)
+    }
+  }
+  )
+}
+
+async function talklist(){
+  const d = await get_data(params4)
+  return new Promise((resolve)=>{
+    var i
+    const tasklist = d.resultData.data.queryTaskListInfo.taskInfoList
+    try{
+      for (i=0;i<tasklist.length;i++){
+        if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
+          var msg = (i+1)+"."+"🏷️"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          talkmsg += msg
+        }
+      }
+      sams.log(talkmsg)
+    }catch(e){
+      sams.log(e)
+    }finally{
+      resolve(talkmsg)
+    }
+  }
+  )
+}
+
+async function reviewlist(){
+  const d = await get_data(params2)
+  return new Promise((resolve)=>{
+    var i
+    const tasklist = d.resultData.data.queryTaskListInfo.taskInfoList
+    try{
+      for (i=0;i<tasklist.length;i++){
+        if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
+          var msg = (i+1)+"."+"🏷️"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          reviewmsg += msg
+        }
+      }
+      sams.log(reviewmsg)
+    }catch(e){
+      sams.log(e)
+    }finally{
+      resolve(reviewmsg)
+    }
+  }
+  )
+}
+
+async function picklist(){
+  const d = await get_data(params1)
+  return new Promise((resolve)=>{
+    var i
+    const tasklist = d.resultData.data.queryTaskListInfo.taskInfoList
+    try{
+      for (i=0;i<tasklist.length;i++){
+        if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
+          var msg = (i+1)+"."+"🏷️"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          pickmsg += msg
+        }
+      }
+      sams.log(pickmsg)
+    }catch(e){
+      sams.log(e)
+    }finally{
+      resolve(pickmsg)
+    }
+  }
+  )
+}
+
+async function invitelist(){
+  const d = await get_data(params3)
+  return new Promise((resolve)=>{
+    var i
+    const tasklist = d.resultData.data.queryTaskListInfo.taskInfoList
+    try{
+      for (i=0;i<tasklist.length;i++){
+        if (tasklist[i].buttonColor == 1 && tasklist[i].stockTotalDaySurplus !==0) {
+          var msg = (i+1)+"."+"🏷️"+ tasklist[i].taskName +" "+"💰"+ tasklist[i].unitPrice +"元 "+"🟢"+ tasklist[i].buttonStr + " 名额"+tasklist[i].stockTotalDaySurplus +`\n`
+          invitemsg += msg
+        }
+      }
+      sams.log(invitemsg)
+    }catch(e){
+      sams.log(e)
+    }finally{
+      resolve(talkinvitemsgmsg)
+    }
+  }
+  )
+}
+
+function show(){
+  let subtitle = "任务详情"
+  var message = lookmsg+pickmsg+talkmsg+reviewmsg+invitemsg
+  sams.msg(taskName,subtitle,message,option)
+}
 
 function init() {
   isSurge = () => {
