@@ -75,7 +75,7 @@ var talkmsg = "【话题】\n"
 var reviewmsg = "【调研】\n"
 var invitemsg = "【测评】\n"
 
-/**async function dotask(){
+async function dotask(){
   await Promise.all([
    looklist(),
    picklist(),
@@ -87,14 +87,8 @@ var invitemsg = "【测评】\n"
 }
 
 dotask()
-**/
 
-looklist()
-setTimeout(talklist(),100)
-setTimeout(picklist(),100)
-setTimeout(reviewlist(),100)
-setTimeout(invitelist(),100)
-show()
+
 
 function get_data(p){
   return new Promise((resolve)=>{
