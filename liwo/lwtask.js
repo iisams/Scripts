@@ -75,16 +75,17 @@ var pickmsg = "【票选】\n"
 var talkmsg = "【话题】\n"
 var reviewmsg = "【调研】\n"
 var invitemsg = "【测评】\n"
-dotask()
+
 async function dotask(){
   await looklist()
   await picklist()
   await reviewlist()
   await talklist()
   await invitelist()；
-  show()
+  
 }
-
+dotask()
+show()
 function get_data(p){
   return new Promise((resolve)=>{
     sams.get(p,(error,response,data)=>{
