@@ -120,7 +120,7 @@ function doing(){
     for (var i in taskid){
        var n = taskid[i]
        dotaskid(n)
-       taskmsg += `❤完成浏览${taskname[i]}`
+       taskmsg += `❤完成浏览${taskname[i]}\n`
     }
   }
  else return
