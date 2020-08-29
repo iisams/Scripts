@@ -81,8 +81,8 @@ async function dotask(){
   await picklist()
   await reviewlist()
   await talklist()
-  await invitelist()
-  await show()
+  await invitelist()；
+  show()
 }
 
 function get_data(p){
