@@ -80,7 +80,7 @@ var message = ""
 
 
 var message = ""
-
+var active = ""
 /*function dotask(){
    setTimeout(looklist(),10)
    setTimeout(picklist(),20)
@@ -90,6 +90,29 @@ var message = ""
    setTimeout(show(),60)
 }*/
 
+function gettip() {
+  return new Promise((resolve) => {
+    var nowtime = Date.now()
+    var params = {
+    url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/queryBubble?_="+ nowtime +"&reqData=%7B%22req%22:%7B%22channelId%22:2,%22typeCode%22:%22interactive_bubble%22,%22size%22:1%7D%7D",
+    headers:headers
+    }
+    sams.get(params,
+    (error,reponse,data) => {
+      try {
+        data = JSON.parse(data);
+        if (data.resultCode == 0) {
+        active += ${data.resultData.bubbleInfoList[0].content}
+        }
+       else{active +=`Github：@iisams 制作`}
+      } catch (e) {
+        sams.log(e, resp);
+      } finally {
+        resolve(data);
+      }
+    })
+  })
+}
 
 function get_data(p){
   return new Promise((resolve)=>{
@@ -220,7 +243,7 @@ async function invitelist(){
 }
 
 function show(){
-  let subtitle = "任务详情"
+  let subtitle = active
   sams.log(message)
   if (message){
   sams.msg(taskName,subtitle,message,option)
@@ -235,7 +258,8 @@ async function dotask(){
    picklist(),
    reviewlist(),
    talklist(),
-   invitelist()
+   invitelist(),
+   gettip()
   ]);
   await show()
 }
