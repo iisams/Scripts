@@ -121,7 +121,7 @@ async function looklist(){
           message += msg
         }
       }
-      sams.log(message)
+      sams.log(tasklist)
     }catch(e){
       sams.log(e)
     }finally{
@@ -143,7 +143,7 @@ async function talklist(){
           message += msg
         }
       }
-      sams.log(message)
+      sams.log(tasklist)
     }catch(e){
       sams.log(e)
     }finally{
@@ -165,7 +165,7 @@ async function reviewlist(){
           message += msg
         }
       }
-      sams.log(message)
+      sams.log(tasklist)
     }catch(e){
       sams.log(e)
     }finally{
@@ -187,7 +187,7 @@ async function picklist(){
           message += msg
         }
       }
-      sams.log(message)
+      sams.log(tasklist)
     }catch(e){
       sams.log(e)
     }finally{
@@ -209,7 +209,7 @@ async function invitelist(){
           message += msg
         }
       }
-      sams.log(message)
+      sams.log(tasklist)
     }catch(e){
       sams.log(e)
     }finally{
