@@ -51,7 +51,7 @@ function userinfo() {
         sams.log(JSON.stringify(data))
         if (data.resultCode == 0) {
           var list = data.resultData.ecologicUserInfo
-          usermsg += `用户:${list.pin} 等级:Lv${list.scoreLevel} 活力值:${list.ecologicScore}`
+          usermsg += `ID:${list.pin}Score:${list.ecologicScore}Lv${list.scoreLevel}`
           sams.log("获取用户信息成功:"+usermsg)
         }
        else{usermsg += null}
@@ -134,7 +134,7 @@ function Sign() {
       try {
         data = JSON.parse(data);
         if (data.resultCode == 0 && data.resultMsg == '操作成功') {
-                subTitle = `❤签到成功\n`
+                subTitle = `❤特权活力值签到成功\n`
                 message += subTitle
                 sams.log(JSON.stringify(data))
               } else if (data.resultCode == 3) {
@@ -159,7 +159,7 @@ function Sign() {
 
 
 function show(){
-    let title = "特权活力值签到\n"+usermsg
+    let title = usermsg
     sams.msg(title,message,taskmsg)
 }
 
