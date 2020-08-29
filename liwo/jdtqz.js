@@ -21,25 +21,48 @@ var taskid = []
 var taskname = []
 var message=""
 var taskmsg = ""
+var usermsg = ""
 
 var taskparams = {
   url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/taskStatistics?_="+nowtime+"&reqData=%7B%22req%22:%7B%22pageSize%22:50,%22channelId%22:3%7D%7D",
   headers:headers
 }
 
+var userparams = {
+  url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/queryEcologicUserInfo",
+  headers:headers,
+  body:"reqData={}"
+}
+
+
 const signparams ={
      url:signurl,
      headers:headers,
  }
 
-async function dotask() {
-  await Sign();
-  await gettaskid();
-  await doing()
-  await show()
-}
 
-dotask()
+
+function userinfo() {
+  return new Promise((resolve) => {
+    sams.post(userparams,
+    (error,reponse,data) => {
+      try {
+        data = JSON.parse(data);
+        sams.log(JSON.stringify(data))
+        if (data.resultCode == 0) {
+          var list = data.resultData.ecologicUserInfo
+          usermsg += `用户:${list.pin} 等级:Lv${list.scoreLevel} 活力值:${list.ecologicScore}`
+          sams.log("获取用户信息成功:"+usermsg)
+        }
+       else{usermsg += null}
+      } catch (e) {
+        sams.log(e, resp);
+      } finally {
+        resolve(data);
+      }
+    })
+  })
+}
 
 function gettaskid() {
   return new Promise((resolve) => {
@@ -47,7 +70,7 @@ function gettaskid() {
     (error,reponse,data) => {
       try {
         data = JSON.parse(data);
-        sams.log(data)
+        sams.log(JSON.stringify(data))
         sams.log("正在获取taskID")
         if (data.resultCode == 0) {
           var list = data.resultData.taskList
@@ -113,16 +136,16 @@ function Sign() {
         if (data.resultCode == 0 && data.resultMsg == '操作成功') {
                 subTitle = `❤签到成功\n`
                 message += subTitle
-                sams.log(data)
+                sams.log(JSON.stringify(data))
               } else if (data.resultCode == 3) {
                   subTitle = `💔签到失败,请重新获取cookie\n`
                   message += subTitle
-                  sams.log(data)
+                  sams.log(JSON.stringify(data))
               } else {
                 subTitle = `未知`
                 detail = `❗ ${data.resultrMsg}\n`
                 message += subTitle+detail
-                sams.log(data)
+                sams.log(JSON.stringify(data))
               }
        
       } catch (e) {
@@ -136,9 +159,19 @@ function Sign() {
 
 
 function show(){
-    let title = "京东特权活力值签到"
+    let title = "特权活力值签到 "+usermsg
     sams.msg(title,message,taskmsg)
 }
+
+async function dotask() {
+  await Sign();
+  await gettaskid();
+  await doing()
+  await userinfo()
+  await show()
+}
+
+dotask()
 
 function init() {
     isSurge = () => {
