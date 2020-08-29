@@ -159,7 +159,7 @@ function Sign() {
 
 
 function show(){
-    let title = "特权活力值签到 "+usermsg
+    let title = "特权活力值签到\n"+usermsg
     sams.msg(title,message,taskmsg)
 }
 
