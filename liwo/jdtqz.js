@@ -77,7 +77,7 @@ function gettaskid() {
             taskid.push(list[i].taskId)
             taskname.push(list[i].subTitle)
           }
-          sams.log("获取taskID和taskName成功:"+taskid+" | "+taskname)
+          sams.log("获取taskID和taskName成功:"+taskid+" \n "+taskname)
         }
        else{taskid += null}
       } catch (e) {
@@ -114,7 +114,7 @@ async function doing(){
   if (taskid){
     sams.log("正在逐个处理任务")
     for (var i in taskid){
-       const d = await dotaskid(taskid[i]) 
+       let d = await dotaskid(taskid[i]) 
        if (d.resultCode == 0) {
           let subTitle = `❤浏览${taskname[i]}${d.resultData.info}\n`
           taskmsg += subTitle
