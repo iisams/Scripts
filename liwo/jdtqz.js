@@ -21,7 +21,7 @@ var taskid = []
 var taskname = []
 var message=""
 var taskmsg = ""
-const option = {"open-url":"jdmobile://virtual?params=%7B%22category%22:%22jump%22,%22des%22:%22m%22,%22url%22:%22https%3A%2F%2Fbtfront.jd.com%2Frelease%2Fgrowth%2Findex.html%23%2Fhome%22%7D"}
+const option = {"open-url":"openapp.jdmobile://virtual?params=%7B%22category%22:%22jump%22,%22des%22:%22m%22,%22url%22:%22https%3A%2F%2Fbtfront.jd.com%2Frelease%2Fgrowth%2Findex.html%23%2Fhome%22%7D"}
 
 var taskparams = {
   url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/taskStatistics?_="+nowtime+"&reqData=%7B%22req%22:%7B%22pageSize%22:50,%22channelId%22:3%7D%7D",
