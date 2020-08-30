@@ -40,10 +40,21 @@ const headers = {"Accept": "application/json, text/plain, */*",
 "Accept-Encoding": "gzip, deflate, br",
 "Accept-Language": "zh-cn",
 "Connection": "keep-alive",
-"Cookie": Val,"Host": "ms.jr.jd.com",
+"Cookie": Val,
+"Host": "ms.jr.jd.com",
 "Origin": "https://btfront.jd.com",
 "Referer": "https://btfront.jd.com/release/zoneAuth/index.html?source=207&backURL=https%3A%2F%2Flwxianshi.jd.com%2FidleHours%2Findex.html%23%2Fbridge",
-"User-Agent":"jdapp;iPhone;4.0.0;13.5.1;00e75528501feabe305085bd1d74f9ad2a49cc97;network/wifi;ADID/BDAE754C-5799-461C-B226-BC666A103CE1;model/iPhone8,4;appBuild/428;jdSupportDarkMode/0;pv/55.1;pap/(null)|(null)|IOS 13.5.1;apprpd/;psn/00e75528501feabe305085bd1d74f9ad2a49cc97|554;usc/;jdv/;umd/;psq/0;ucp/;app_device/IOS;utr/;ref/;adk/;ads/;Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/yocial",}
+"User-Agent":"jdapp;iPhone;4.0.0;13.6.1;00e75528501feabe305085bd1d74f9ad2a49cc97;network/wifi;ADID/BDAE754C-5799-461C-B226-BC666A103CE1;model/iPhone8,4;appBuild/428;jdSupportDarkMode/0;pv/55.1;pap/(null)|(null)|IOS 13.5.1;apprpd/;psn/00e75528501feabe305085bd1d74f9ad2a49cc97|554;usc/;jdv/;umd/;psq/0;ucp/;app_device/IOS;utr/;ref/;adk/;ads/;Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/yocial",}
+
+const header2 = {"Accept": "application/json, text/plain, */*",
+  "Accept-Encoding": "gzip, deflate, br",
+  "Accept-Language": "zh-cn",
+  "Connection": "keep-alive",
+  "Cookie": Val,
+  "Host": "ms.jr.jd.com",
+  "Origin": "https://btfront.jd.com",
+  "Referer": "https://btfront.jd.com/release/growth/index.html?source=SYDBRK&lng=110.328383&lat=25.262626&sid=&un_area=",
+  "User-Agent": "jdapp;iPhone;9.1.2;13.6.1;4216e3eb5d471450716807c479490761c4c4c5ab;network/wifi;ADID/0AF252D9-FB62-4177-9DE5-EEF1E3D4D5CB;supportApplePay/3;hasUPPay/1;pushNoticeIsOpen/0;model/iPhone8,4;addressid/2492304509;hasOCPay/0;appBuild/167361;supportBestPay/1;jdSupportDarkMode/0;pv/561.4;apprpd/MyJD_Main;ref/JDWebViewController;psq/3;ads/;psn/4216e3eb5d471450716807c479490761c4c4c5ab|825;jdv/0|iosapp|t_335139774|appshare|CopyURL|1598588445172|1598588452;adk/;app_device/IOS;pap/JA2015_311210|9.1.2|IOS 13.6.1;Mozilla/5.0 (iPhone; CPU iPhone OS 13_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148;supportJDSHWK/1",}
 
 var params1 = {
     url:pick,
@@ -86,7 +97,7 @@ function gettip() {
     var nowtime = Date.now()
     var params = {
     url:"https://ms.jr.jd.com/gw/generic/bt/h5/m/queryBubble?_="+ nowtime +"&reqData=%7B%22req%22:%7B%22channelId%22:2,%22typeCode%22:%22interactive_bubble%22,%22size%22:1%7D%7D",
-    headers:headers
+    headers:header2
     }
     sams.get(params,
     (error,reponse,data) => {
