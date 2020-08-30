@@ -97,32 +97,32 @@ function dotaskid(id) {
     }
     sams.get(dotaskparams,
     (error,reponse,data) => {
-      try {
-        data = JSON.parse(data);
-        if (data.resultCode == 0) {
-          let subTitle = id+`>>执行任务${data.resultData.info}\n`
-          sams.log(subTitle)
-        }
-       else{sams.log("没有任务或任务失败\n")}
-      } catch (e) {
-        sams.log(e, resp);
-      } finally {
-        resolve(data);
+      try{
+        data = JSON.parse(data)
+      }
+      catch(e){
+        sams.log(e,response)
+      }
+      finally{
+        resolve(data)
       }
     })
   })
 }
 
-function doing(){
-    if (taskid){
+async function doing(){
+  if (taskid){
     sams.log("正在逐个处理任务")
     for (var i in taskid){
-       var n = taskid[i]
-       dotaskid(n)
-       taskmsg += `❤完成浏览${taskname[i]}\n`
+       const d = await dotaskid(taskid[i]) 
+       if (d.resultCode == 0) {
+          let subTitle = `❤浏览${taskname[i]}${d.resultData.info}\n`
+          taskmsg += subTitle
+          sams.log(subTitle)
+        }
     }
   }
- else return
+else return
 }
 
 
