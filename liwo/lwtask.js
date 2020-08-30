@@ -93,7 +93,7 @@ function gettip() {
       try {
         data = JSON.parse(data);
         if (data.resultCode == 0) {
-        active += `🍄小蘑菇说：${data.resultData.bubbleInfoList[0].content}`
+        active += `🍄说：${data.resultData.bubbleInfoList[0].content}`
         sams.log(active)
         }
        else{active +=`Github：@iisams 制作`}
