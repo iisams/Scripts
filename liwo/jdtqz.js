@@ -4,7 +4,7 @@
 //http-request https:\/\/api\.m\.jd\.com\/client\.action.*functionId=signBean tag=获取京东Cookie, script-path=https://raw.githubusercontent.com/iisams/Scripts/
 
 const sams = init()
-let Val = sams.getdata('CookieJD2')
+let Val = sams.getdata('CookieJD')
 const headers ={"Accept": "application/json, text/plain, */*",
                 "Accept-Encoding": "gzip, deflate, br",
                 "Accept-Language": "zh-cn",
