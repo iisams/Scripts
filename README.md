@@ -34,6 +34,8 @@ hostname = api.m.jd.com
 
 【QX远程 脚本配置】
 
+cookie获取重写订阅：  https://raw.githubusercontent.com/iisams/Scripts/master/QXcookie.conf 
+
 [task_local]
 
 */5 0-22 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/lwtask.js, tag=梨涡闲时任务提醒, img-url=https://raw.githubusercontent.com/iisams/Scripts/master/png/liwoicon.png, enabled=true
