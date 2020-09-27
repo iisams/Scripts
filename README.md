@@ -2,7 +2,7 @@
 
 
 ![梨涡](https://raw.githubusercontent.com/bokuosusume/JavaScript/master/liwo/png/liwo.png)
-## 梨涡（京东大学生特权app）的闲时任务提醒 与 签到
+## 梨涡App的闲时任务提醒 与 签到
 邀请码：dasaw  
 
  使用nobyda大佬的京东cookie
