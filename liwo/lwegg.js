@@ -24,7 +24,7 @@ function dotask() {
       try {
         data = JSON.parse(data);
         $.log(JSON.stringify(data))
-        if (data.resultData.luckDrawType==1) {
+        if (data.resultCode == 0 && data.resultData.luckDrawType==1) {
         message += `恭喜获得${data.resultData.couponList[0].prizeName} ${data.resultData.couponList[0].assignedAmount} 点击通知查看优惠券`
         $.log(message)
         }
