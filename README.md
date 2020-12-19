@@ -3,9 +3,11 @@
 
 ![梨涡](https://raw.githubusercontent.com/bokuosusume/JavaScript/master/liwo/png/liwo.png)
 ## 梨涡App的闲时任务提醒、签到以及京东特权活力值签到领取
-邀请码：dasaw  
+邀请码：zhazekk  
+       dasaw
 
- 使用nobyda大佬的京东cookie
+使用nobyda大佬的京东cookie1
+确保梨涡账号同nobyda大佬的jdcookie1的账号一致
 
 [下载链接]( https://2do.jd.com/events/invite_award/?channel=newcash&extParam=1260048962852974594&inviter=1236228340192960513)
 [下载链接](https://2do.jd.com/events/invite_award/?channel=newcash&extParam=1260048962852974594&inviter=1236228340192960513)
