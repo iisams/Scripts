@@ -21,7 +21,7 @@
  const option = {"open-url":"yocial://webview/?url=https%3A%2F%2F2do.jd.com%2Fevents%2F7-days%2F%23%2F&login=1"}
  const option2 = {"open-url":"yocial://webview/?url=https%3A%2F%2Flwxianshi.jd.com%2FidleHours%2Findex.html%23%2Fwallet&login=1"}
  
- const header = {"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Length": "246","Content-Type": "application/x-www-form-urlencoded","Cookie": lwVal,"Host": "api.m.jd.com","Origin": "https://2do.jd.com","Referer": "https://2do.jd.com/events/7-days/","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/yocial,"}
+ const header = {"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Length": "246","Content-Type": "application/x-www-form-urlencoded","Cookie": lwVal,"Host": "api.m.jd.com","Origin": "https://2do.jd.com","Referer": "https://2do.jd.com/events/7-days/","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/yocial,"}
  
  const nowtime = Date.now()
  const changebody = lwbody.replace(/(&t=)\d*/,"&t=" + nowtime)
@@ -77,7 +77,7 @@
      (error,reponse,data) => {
        try {
          result = JSON.parse(data);
-         sams.log(result)
+         sams.log(JSON.stringify(result)）
          if (result.status == true) {
           let subTitle = `💚签到成功\n`
           let detail = "✅" +result.data.message 
@@ -99,7 +99,11 @@
        }
        //重新新一轮签到
        else if (result.status == false  && result.error.code == 39004) {
-         setTimeout(resetSign(),500)
+         setTimeout(resetSign(),10)
+         sams.log("重新新一轮签到")
+        }
+       else if (result.status == false  && result.error.code == 39003) {
+         setTimeout(resetSign(),10)
          sams.log("重新新一轮签到")
         }
        //失败
