@@ -77,7 +77,7 @@
      (error,reponse,data) => {
        try {
          result = JSON.parse(data);
-         sams.log(JSON.stringify(result)）
+         sams.log(JSON.stringify(result))
          if (result.status == true) {
           let subTitle = `💚签到成功\n`
           let detail = "✅" +result.data.message 
