@@ -23,7 +23,7 @@
  
  const header = {"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Length": "246","Content-Type": "application/x-www-form-urlencoded","Cookie": lwVal,"Host": "api.m.jd.com","Origin": "https://2do.jd.com","Referer": "https://2do.jd.com/events/7-days/","User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/yocial,"}
 
- const header2 = {"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Length": "83","Content-Type": "application/x-www-form-urlencoded","Cookie":lwVal ,"Host": "api.m.jd.com","Origin": "https://2do.jd.com","Referer": "https://2do.jd.com/app/my-assets/?sid=f311a2b205c2a49c71601718de57ddcw","User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/yocial/5.2.3(iOS;14.2;com.jd.campustodo)",}
+ const header2 = {"Accept": "application/json, text/plain, */*","Accept-Encoding": "gzip, deflate, br","Accept-Language": "zh-cn","Connection": "keep-alive","Content-Length": "83","Content-Type": "application/x-www-form-urlencoded","Cookie":lwVal ,"Host": "api.m.jd.com","Origin": "https://2do.jd.com","Referer": "https://2do.jd.com/app/my-assets/","User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148/yocial/5.2.3(iOS;14.2;com.jd.campustodo)",}
 
  const nowtime = Date.now()
  const changebody = lwbody.replace(/(&t=)\d*/,"&t=" + nowtime)
@@ -62,7 +62,7 @@
          sams.log(data)
          if (data.status == true) {
          usermsg += `ᥬᥬ😎ᩤᩤ账号：${data.data.centerUserInfo.nickName}`
-         money += `💰钱包：${data.data.centerUserInfo.lazyIncome}元\n`
+         money += `💰钱包：${data.data.centerUserInfo.lazyIncome}元\n🪙积分：${data.data.centerUserInfo.point}分`
          }
         else{money +=`💰钱包余额获取失败`}
        } catch (e) {
