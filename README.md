@@ -6,8 +6,8 @@
 邀请码：zhazekk  
        dasaw
 
-使用nobyda大佬的京东cookie1
-确保梨涡账号同nobyda大佬的jdcookie1的账号一致
+因为梨涡app内cookie有效期太短，所以使用nobyda大佬的京东cookie1，cookie获取的脚本主要是获取Body，
+请确保梨涡账号同nobyda大佬的jdcookie1的账号一致哦。
 
 [下载链接]( https://2do.jd.com/events/invite_award/?channel=newcash&extParam=1260048962852974594&inviter=1236228340192960513)
 [下载链接](https://2do.jd.com/events/invite_award/?channel=newcash&extParam=1260048962852974594&inviter=1236228340192960513)
