@@ -62,7 +62,7 @@
          sams.log(data)
          if (data.status == true) {
          usermsg += `ᥬᥬ😎ᩤᩤ账号：${data.data.centerUserInfo.nickName}`
-         money += `💰钱包：${data.data.centerUserInfo.lazyIncome}元\n🪙积分：${data.data.centerUserInfo.point}分`
+         money += `💰钱包：${data.data.centerUserInfo.lazyIncome}元\n🪙积分：${data.data.centerUserInfo.point}分\n`
          }
         else{money +=`💰钱包余额获取失败`}
        } catch (e) {
