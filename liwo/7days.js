@@ -49,7 +49,7 @@ const sams = new Env('梨涡签到领现金');
  }
  
  var money = ''
- var message = '活动于2月10日结束'
+ var message = 'Sorry，活动于2月10日结束。新活动再见👋'
  var usermsg = ''
  var userimg =''
  
