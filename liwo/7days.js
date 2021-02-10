@@ -49,7 +49,7 @@ const sams = new Env('梨涡签到领现金');
  }
  
  var money = ''
- var message = 'Sorry，活动于2月10日结束。新活动再见👋'
+ var message = ''
  var usermsg = ''
  var userimg =''
  
@@ -180,7 +180,7 @@ const sams = new Env('梨涡签到领现金');
    
    
    async function dotask() {
-   //await sign();
+   await sign();
    await getmoney();
    await show()
  }
