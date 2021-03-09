@@ -174,7 +174,7 @@ const sams = new Env('梨涡签到领现金');
   }
   
   function show(){
-    let title = "梨涡签到领现金 3月10日结束"
+    let title = "梨涡签到领现金 -3月10日结束"
     sams.msg(title,usermsg,money+message,{ 'open-url': "yocial://webview/?url=https%3A%2F%2F2do.jd.com%2Fevents%2F7-days%2F%23%2F&login=1", 'media-url': userimg })
   }
    
