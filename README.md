@@ -2,7 +2,7 @@
 
 
 ![梨涡](https://raw.githubusercontent.com/iisams/Scripts/master/png/liwoicon.jpg)
-## 梨涡App的闲时任务提醒、签到以及京东特权活力值签到领取
+## 梨涡App的闲时任务提醒、签到（已结束，同时梨涡APP将停止服务）以及京东特权活力值签到领取
 邀请码：zhazekk  
       或 dasaw
 
