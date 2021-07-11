@@ -1,7 +1,7 @@
 # Sams Scripts 
 
 
-![京东小白成长分](https://raw.githubusercontent.com/Orz-3/mini/master/jdczf.png)
+![京东小白成长分](https://raw.githubusercontent.com/iisams/Scripts/png/jd.jpg)
 ## 梨涡App的闲时任务提醒、签到（已结束，梨涡APP已停止服务）以及京东特权活力值（小白成长分）签到领取
 
 使用nobyda大佬的京东cookie1。
