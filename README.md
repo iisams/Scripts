@@ -1,18 +1,11 @@
 # Sams Scripts 
 
 
-![梨涡](https://raw.githubusercontent.com/iisams/Scripts/master/png/liwoicon.jpg)
-## 梨涡App的闲时任务提醒、签到（已结束，同时梨涡APP将停止服务）以及京东特权活力值签到领取
-邀请码：zhazekk  
-      或 dasaw
+![京东小白成长分](https://raw.githubusercontent.com/Orz-3/mini/master/jdczf.png)
+## 梨涡App的闲时任务提醒、签到（已结束，梨涡APP已停止服务）以及京东特权活力值（小白成长分）签到领取
 
-因为梨涡app内cookie有效期太短，所以使用nobyda大佬的京东cookie1，cookie获取的脚本主要是获取Body，
-请确保梨涡账号同nobyda大佬的jdcookie1的账号一致哦。
+使用nobyda大佬的京东cookie1。
 
-[下载链接]( https://2do.jd.com/events/invite_award/?channel=newcash&extParam=1260048962852974594&inviter=1236228340192960513)
-[下载链接](https://2do.jd.com/events/invite_award/?channel=newcash&extParam=1260048962852974594&inviter=1236228340192960513)
-[下载链接]( https://2do.jd.com/events/invite_award/?channel=newcash&extParam=1260048962852974594&inviter=1236228340192960513)
-[下载链接](https://2do.jd.com/events/invite_award/?channel=newcash&extParam=1260048962852974594&inviter=1236228340192960513)
 ```properties
 支持QX Loon Surge 其余自行配置
 
@@ -22,11 +15,6 @@
 
 cron "5 8 * * *" script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/jdtqz.js, tag= 京东特权活力值
 
-cron "*/5 1-22 * * *" script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/lwtask.js, tag=京东梨涡闲时任务提醒
-
-cron "7 0 * * *" script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7days.js,tag=梨涡签到领现金
-
-http-request https:\/\/api\.m\.jd\.com\/api\/v1\/sign\/doSign script-path=https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7dayscookie.js, requires-body=true, timeout=10, tag=梨涡签到领现金Cookie
 
 
 [MITM]  
@@ -40,8 +28,6 @@ cookie获取重写订阅：  https://raw.githubusercontent.com/iisams/Scripts/ma
 
 [task_local]
 
-*/5 0-22 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/lwtask.js, tag=梨涡闲时任务提醒, img-url=https://raw.githubusercontent.com/iisams/Scripts/master/png/liwoicon.png, enabled=true
-17 0 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/7days.js, tag=梨涡签到领现金, img-url=https://raw.githubusercontent.com/iisams/Scripts/master/png/liwoicon.png, enabled=true
 6 8 * * * https://raw.githubusercontent.com/iisams/Scripts/master/liwo/jdtqz.js, tag=京东特权活力值, img-url=https://raw.githubusercontent.com/Orz-3/mini/master/jdczf.png, enabled=true
 
 ```
