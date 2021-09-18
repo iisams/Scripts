@@ -4,7 +4,7 @@
 ![京东小白成长分](https://github.com/iisams/Scripts/blob/0715a4b41c005791ecc1ef25231315db45651e35/png/jd.jpg)
 ## 梨涡App的闲时任务提醒、签到（已结束，梨涡APP已停止服务）以及京东特权活力值（小白成长分）签到领取
 
-使用nobyda大佬的京东cookie1。
+使用nobyda大佬的京东cookie
 
 ```properties
 支持QX Loon Surge 其余自行配置
