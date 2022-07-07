@@ -75,6 +75,6 @@ def main_handler():
             senduser = game_info['data']['list'][0]['nickname']
             sendmsg = bbs_sign_reward(cookies, get_ds(), game_info)['message']
             sendtext +=senduser + '➡️' + sendmsg + '\n'
-    send('✨✨原神签到✨✨', sendtext + "\n✨✨https://github.com/iisams✨✨")
+    send('✨✨原神签到✨✨', sendtext + "\n✨✨ https://github.com/iisams ✨✨")
 
 main_handler()
